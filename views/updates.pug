@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    h1 Add a Fast Food Chain
+    a(href='/') Return to the homepage
+
+    form(action='/update-cobj', method='POST')
+      div
+        label(for='chain_name') Name
+        input(type='text', name='chain_name', id='name', required=true)
+
+      div
+        label(for='chain_type') Chain Type
+        input(type='text', name='chain_type', id='chain_type', required=true)
+
+      div
+        label(for='chain_bio') Chain Bio
+        textarea(name='chain_bio', id='chain_bio', required=true)
+
+      div
+        button(type='submit') Create Record

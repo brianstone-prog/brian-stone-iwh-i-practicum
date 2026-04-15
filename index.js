@@ -8,8 +8,9 @@ const PORT = 3000;
 
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_API_KEY;
 
+// Replace these if your internal property names are different
 const OBJECT_TYPE = '2-60878916';
-const PROPERTIES = ['chain_name', 'chain_type', 'chain_bio'];
+const PROPERTIES = ['name', 'chain_type', 'chain_bio'];
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -55,13 +56,13 @@ app.get('/update-cobj', (req, res) => {
 
 app.post('/update-cobj', async (req, res) => {
   try {
-    const { chain_name, chain_type, chain_bio } = req.body;
+    const { name, chain_type, chain_bio } = req.body;
 
     await axios.post(
       `https://api.hubapi.com/crm/v3/objects/${OBJECT_TYPE}`,
       {
         properties: {
-          chain_name,
+          name,
           chain_type,
           chain_bio,
         },
